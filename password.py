@@ -1,4 +1,20 @@
 import random
+# Import the module
+from tkinter import *
+
+# Bulding the root window
+base = Tk()
+
+# Window title and Dimensions
+base.title("Python Password Generator")
+base.geometry('400x350')
+
+welcome = Label(base,text = "Here is a simple password generator")
+welcome.grid()
+
+
+
+base.mainloop()
 
 def yesCheck(option):
     if (option.lower() == "no"):
@@ -8,7 +24,6 @@ def yesCheck(option):
 
 
 #---------START-OF-PROGRAM---------------------------------------------------------------------------
-print("Here is a simple password generator")
 
 password = ""
 
@@ -49,11 +64,11 @@ counter = 0
 while counter < value:
     choice = random.randint(1,4)
 
-    if option1 == "Yes" and choice == 1:
+    if option1.lower() == "yes" and choice == 1:
         password += chr(random.randint(33,47))   
-    elif option2 == "Yes" and choice == 2:
+    elif option2 == "yes" and choice == 2:
         password += chr(random.randint(48,57))
-    elif option3 == "Yes" and choice == 3:
+    elif option3 == "yes" and choice == 3:
         password += chr(random.randint(65,90))
     else:
         password += chr(random.randint(97,122))
