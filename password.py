@@ -1,46 +1,75 @@
 import random
 # Import the module
-from tkinter import *
-
-#booleans
-lengthDone = False
+import tkinter as tk
 
 # Building the root window
-base = Tk()
+base = tk.Tk()
 
 # Save the length of the password
-length = IntVar()
-caps = IntVar()
-special = IntVar()
-numbers = IntVar()
+lowerNo = tk.IntVar()
+capsNo = tk.IntVar()
+specialNo = tk.IntVar()
+numbersNo = tk.IntVar()
+sum = 0
+lower = lowerNo.get()
+caps = capsNo.get()
+special = specialNo.get()
+numbers = numbersNo.get()
+
 
 # Window title and Dimensions
 base.title("Python Password Generator")
-base.geometry('400x350')
+base.geometry("650x1600")
 
-prompt = Label(base,text = "Welcome to my randomized password generator")
-prompt.grid(row=1,column=0)
+def summation(sum):
+    sum = lower + caps + special + numbers
 
-note = Label(base,text = "NOTE: Your password CANNOT exceed 20 characters")
-note.grid(row=3,column=0)
+def randomize():
+    lower = lowerNo.get()
+    caps = capsNo.get()
+    special = specialNo.get()
+    numbers = numbersNo.get()
 
-def startClicked():
-    prompt.configure(text = "How many characters would you like your password to be?")
-    
 
-clicker = Button(base,text = "Click here", command = startClicked)
-clicker.grid()
+
+
+welcome = tk.Label(base,text = "Welcome to my randomized password generator!", font=('arial',20,'bold'))
+welcome.grid(row=1,column=1, sticky= tk.N,pady=20, padx=80)
+
+note = tk.Label(base,text = "NOTE: Your password CANNOT exceed 20 characters", font=('arial',15,'bold'))
+note.grid(row=2,column=1,ipadx=30, ipady=10)
+
+prompt = tk.Label(base,text = "Specify how many characters you want for each category!")
+prompt.grid(row=20,column=1, pady=30)
+
+#These are the different Entries
+option1L = tk.Label(base,text = "LowerCases")
+option1L.grid(row=30,column=1, pady=10,sticky=tk.W, padx= 200)
+
+option1E = tk.Entry(base,textvariable = lowerNo, font=('arial',10))
+option1E.grid(row=30,column=1, pady=10, sticky=tk.W, padx = 300)
+
+option1L = tk.Label(base,text = "Captials")
+option1L.grid(row=40,column=1, pady=10,sticky=tk.W, padx= 200)
+
+option1E = tk.Entry(base,textvariable = capsNo, font=('arial',10))
+option1E.grid(row=40,column=1, sticky=tk.W,pady=10, padx = 300)
+
+option1L = tk.Label(base,text = "Numbers")
+option1L.grid(row=50,column=1, pady=10,sticky=tk.W, padx= 200)
+
+option1E = tk.Entry(base,textvariable = numbersNo, font=('arial',10))
+option1E.grid(row=50,column=1, sticky=tk.W,padx = 300, pady=10)
+
+option1L = tk.Label(base,text = "Special")
+option1L.grid(row=60,column=1, pady=10,sticky=tk.W, padx= 200)
+
+option1E = tk.Entry(base,textvariable = specialNo, font=('arial',10))
+option1E.grid(row=60,column=1, sticky=tk.W,pady=10, padx = 300)
 
 
 
 base.mainloop()
-
-def yesCheck(option):
-    if (option.lower() == "no"):
-        return False
-    else:
-        return True
-
 
 #---------START-OF-PROGRAM---------------------------------------------------------------------------
 
