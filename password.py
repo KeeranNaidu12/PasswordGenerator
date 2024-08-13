@@ -10,25 +10,17 @@ lowerNo = tk.IntVar()
 capsNo = tk.IntVar()
 specialNo = tk.IntVar()
 numbersNo = tk.IntVar()
-sum = 0
+
 lower = lowerNo.get()
 caps = capsNo.get()
 special = specialNo.get()
 numbers = numbersNo.get()
-
+sum = 0
 
 # Window title and Dimensions
 base.title("Python Password Generator")
 base.geometry("650x1600")
 
-def summation(sum):
-    sum = lower + caps + special + numbers
-
-def randomize():
-    lower = lowerNo.get()
-    caps = capsNo.get()
-    special = specialNo.get()
-    numbers = numbersNo.get()
 
 
 
@@ -67,6 +59,29 @@ option1L.grid(row=60,column=1, pady=10,sticky=tk.W, padx= 200)
 option1E = tk.Entry(base,textvariable = specialNo, font=('arial',10))
 option1E.grid(row=60,column=1, sticky=tk.W,pady=10, padx = 300)
 
+def summation(sum):
+    sum = lower + caps + special + numbers
+    
+# Building the password using these conditions
+def randomize(sum):
+    counter = 0
+    while(sum > counter):
+        choice = random.randint(1,4)
+        if option1.lower() == "yes" and choice == 1:
+            password += chr(random.randint(33,47))   
+        elif option2 == "yes" and choice == 2:
+            password += chr(random.randint(48,57))
+        elif option3 == "yes" and choice == 3:
+            password += chr(random.randint(65,90))
+        else:
+            password += chr(random.randint(97,122))
+        
+    counter+=1
+
+
+if(summation(sum) > 0 and summation(sum) < 20):
+    randomize(sum)
+
 
 
 base.mainloop()
@@ -104,21 +119,3 @@ if(yesCheck(option3) == True):
     print("We will consider this!")
 else: 
     print("We will not consider this!")
-
-# Building the password using these conditions
-counter = 0
-while counter < value:
-    choice = random.randint(1,4)
-
-    if option1.lower() == "yes" and choice == 1:
-        password += chr(random.randint(33,47))   
-    elif option2 == "yes" and choice == 2:
-        password += chr(random.randint(48,57))
-    elif option3 == "yes" and choice == 3:
-        password += chr(random.randint(65,90))
-    else:
-        password += chr(random.randint(97,122))
-        
-    counter+=1
-
-print(password)
