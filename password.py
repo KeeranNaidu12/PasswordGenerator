@@ -2,15 +2,34 @@ import random
 # Import the module
 from tkinter import *
 
-# Bulding the root window
+#booleans
+lengthDone = False
+
+# Building the root window
 base = Tk()
+
+# Save the length of the password
+length = IntVar()
+caps = IntVar()
+special = IntVar()
+numbers = IntVar()
 
 # Window title and Dimensions
 base.title("Python Password Generator")
 base.geometry('400x350')
 
-welcome = Label(base,text = "Here is a simple password generator")
-welcome.grid()
+prompt = Label(base,text = "Welcome to my randomized password generator")
+prompt.grid(row=1,column=0)
+
+note = Label(base,text = "NOTE: Your password CANNOT exceed 20 characters")
+note.grid(row=3,column=0)
+
+def startClicked():
+    prompt.configure(text = "How many characters would you like your password to be?")
+    
+
+clicker = Button(base,text = "Click here", command = startClicked)
+clicker.grid()
 
 
 
@@ -27,9 +46,7 @@ def yesCheck(option):
 
 password = ""
 
-# How long is your password?
-print("How many characters would you like your password to be?")
-value = int(input())
+
 print("Got it! Your password will be ", value ," characters long.")
 
 # Special Characters?
