@@ -20,20 +20,20 @@ def randomize():
     counter = lower + caps + special + numbers
 
     if counter > 20:
-        generated.config(text=" The total characetrs selcted exceeds the password limit! Try again")
+        generated.config(text=" The total characters selcted exceeds the password limit! Try again")
         return
 
     char = []
 
-    char.extend(random.choice("abcdefghijklmnopqrstuvwxyz",k=lower))
-    char.extend(random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ",k=caps))
-    char.extend(random.choice("0123456789",k=numbers))
-    char.extend(random.choice("+-=*&^%$#@!?><",k=special))
+    char.extend(random.choices("abcdefghijklmnopqrstuvwxyz",k=lower))
+    char.extend(random.choices("ABCDEFGHIJKLMNOPQRSTUVWXYZ",k=caps))
+    char.extend(random.choices("0123456789",k=numbers))
+    char.extend(random.choices("+-=*&^%$#@!?><",k=special))
 
     random.shuffle(char)
     password = ''.join(char)
 
-    button.config(text="Your password is: " + password)
+    generated.config(text="Your password is: " + password)
 
 
 
@@ -44,7 +44,7 @@ base.geometry("650x1600")
 
 # Labels with what the program is about and basic instructions
 welcome = tk.Label(base,text = "Welcome to my randomized password generator!", font=('arial',20,'bold'))
-welcome.grid(row=1,column=1, sticky= tk.N,pady=20, padx=80)
+welcome.grid(row=1,column=1, sticky= tk.W,pady=20, padx=80)
 
 note = tk.Label(base,text = "NOTE: Your password CANNOT exceed 20 characters", font=('arial',15,'bold'))
 note.grid(row=2,column=1,ipadx=30, ipady=10)
